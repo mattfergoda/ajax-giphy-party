@@ -22,7 +22,10 @@ async function getGif(evt) {
 }
 
 function displayRandomGif(data) {
-  const randomGifUrl = data[0].url;
+  const randomInt = Math.floor(Math.random() * 20);
+
+  console.log("data: ", data[randomInt])
+  const randomGifUrl = data[randomInt].images.original.url;
   const gifImgElement = $('<img>').attr('src', randomGifUrl);
   $('#gif-gallery').append(gifImgElement);
 }
