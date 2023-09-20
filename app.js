@@ -9,7 +9,7 @@ const NUM_GIFS_REQUESTED = 20;
 async function searchGiphyAPI() {
   const searchWords = $("#search-words").val();
 
-  //if (searchWords === '') throw new Error("Empty search string.");
+  if (searchWords === '') throw new Error("Empty search string.");
 
   const endpoint = 'https://api.giphy.com/v1/gifs/search';
   const apiKey = 'MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym';
@@ -46,11 +46,13 @@ function displayRandomGif(data) {
  */
 async function handleSubmit(evt) {
   evt.preventDefault();
-
-  const data = await searchGiphyAPI();
-  displayRandomGif(data.data);
-
-
+  try {
+    const data = await searchGiphyAPI();
+    displayRandomGif(data.data);
+  } catch(err) {
+    console.warn(err);
+    return;
+  }
 }
 
 /**
