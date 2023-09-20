@@ -1,6 +1,7 @@
 "use strict";
 
 const NUM_GIFS_REQUESTED = 20;
+// TODO: put endpoint and api key here. Split endpoint into base URL and everything else.
 
 /**
  * Gets the user's search words and calls Giphy API with those search words.
@@ -25,7 +26,7 @@ async function searchGiphyAPI() {
 
   console.log("getGif response=", response, "data=", data);
 
-  return data;
+  return data.data.map(); // TODO:
 }
 
 /**
@@ -33,7 +34,7 @@ async function searchGiphyAPI() {
  * a random GIF from the object, and displays it in the DOM.
  */
 function displayRandomGif(data) {
-  const randomInt = Math.floor(Math.random() * NUM_GIFS_REQUESTED);
+  const randomInt = Math.floor(Math.random() * NUM_GIFS_REQUESTED); // TODO: Could refactor this
 
   console.log("data: ", data[randomInt]);
   const randomGifUrl = data[randomInt].images.original.url;
